@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <dbdeployments>
+    <dbdeploy
+        connectionString="Data Source=CAL0-VU-ASIS01\SQL2K12;Initial Catalog=msdb;Integrated Security=SSPI;"
+        scriptDirectory="..\SQLAgentScript"
+        useSqlCmd="true"
+        forceUpdate="true"
+        autoCreateChangeLogTable="true"
+        changeLogTableName="eesChangeLog" />
+  </dbdeployments>
+</config>

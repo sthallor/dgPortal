@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Deploy" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Environment Condition=" '$(Environment)' == '' ">UAT</Environment>
+	<IntegrationName>DataGumbo</IntegrationName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Environment)' == 'UAT' ">
+    <IntegrationServer>CAL0-VU-ASIS01</IntegrationServer>
+    <SSISRoot>\\$(IntegrationServer)\SSIS\$(IntegrationName)</SSISRoot>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Environment)' == 'PROD' ">
+    <IntegrationServer>CAL0-PP-ASIS01</IntegrationServer>
+    <SSISRoot>\\$(IntegrationServer)\SSIS\$(IntegrationName)</SSISRoot>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <AppConfig Include="BlackGoldToDataGumboStructuredData\Config\$(Environment)\*.dtsConfig" />
+  </ItemGroup>  
+  
+  <ItemGroup>
+    <Code Include="BlackGoldToDataGumboStructuredData\*.dtsx" />
+  </ItemGroup>  
+  
+  <Target Name="Deploy">
+    <Copy SourceFiles="@(Code)" DestinationFolder="$(SSISRoot)"/>
+    <Copy SourceFiles="@(AppConfig)" DestinationFolder="$(SSISRoot)"/>
+	<Exec Command='dbdeploy.exe --config="Config\dbdeploy.$(Environment).xml"'/>
+  </Target>
+</Project>

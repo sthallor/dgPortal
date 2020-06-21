@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Rig";
+}
+
+<h2>Rig</h2>
+Rig Number: <input type="text" id="rigNumber" value="778"/><input type="button" id="rigNumberGo" title="Get the data for the rig" value="Go" /><br />
+
+<table id="rtChartsTable">
+    <colgroup>
+        <col style="width:700px;" />
+        <col style="width:700px;" />
+    </colgroup>
+        <tr><th>Bit Measured Depth</th><th>Block Height</th></tr><tr><td><div id="divBitMeasuredDepth"/></td><td><div id="divBlockHeight"/></td></tr>
+        <tr><th>Differential Pressure</th><th>Differential Pressure Set Point</th></tr><tr><td><div id="divDifferentialPressure"/></td><td><div id="divDifferentialPressureSetPoint"/></td></tr>
+        <tr><th>Differential Pressure Set Point Active</th><th>Generator 1 KW</th></tr><tr><td><div id="divDifferentialPressureSetPointActive"/></td><td><div id="divGenerator1KW"/></td></tr>
+        <tr><th>Generator 2 KW</th><th>Generator 3 KW</th></tr><tr><td><div id="divGenerator2KW"/></td><td><div id="divGenerator3KW"/></td></tr>
+        <tr><th>Generator 4 KW</th><th>Hole Measured Depth</th></tr><tr><td><div id="divGenerator4KW"/></td><td><div id="divHoleMeasuredDepth"/></td></tr>
+        <tr><th>Hookload</th><th>Pump 1 SPM</th></tr><tr><td><div id="divHookload"/></td><td><div id="divPump1SPM"/></td></tr>
+        <tr><th>Pump 2 SPM</th><th>Pump 3 SPM</th></tr><tr><td><div id="divPump2SPM"/></td><td><div id="divPump3SPM"/></td></tr>
+        <tr><th>Left Degrees</th><th>Left Revolutions</th></tr><tr><td><div id="divLeftDegrees"/></td><td><div id="divLeftRevolutions"/></td></tr>
+        <tr><th>Left RPM</th><th>Left Torque</th></tr><tr><td><div id="divLeftRPM"/></td><td><div id="divLeftTorque"/></td></tr>
+        <tr><th>Right Degrees</th><th>Right Revolutions</th></tr><tr><td><div id="divRightDegrees"/></td><td><div id="divRightRevolutions"/></td></tr>
+        <tr><th>Right RPM</th><th>Right Torque</th></tr><tr><td><div id="divRightRPM"/></td><td><div id="divRightTorque"/></td></tr>
+        <tr><th>Rate of Penetration (ROP)</th><th>Rig State</th></tr><tr><td><div id="divRateofPenetrationROP"/></td><td><div id="divRigState"/></td></tr>
+        <tr><th>ROP Set Point</th><th>ROP Set Point Active</th></tr><tr><td><div id="divROPSetPoint"/></td><td><div id="divROPSetPointActive"/></td></tr>
+        <tr><th>Stand Pipe Pressure (SPP)</th><th>Top Drive Torque</th></tr><tr><td><div id="divStandPipePressureSPP"/></td><td><div id="divTopDriveTorque"/></td></tr>
+        <tr><th>Top Drive Torque Set Point</th><th>Top Drive Torque Set Point Active</th></tr><tr><td><div id="divTopDriveTorqueSetPoint"/></td><td><div id="divTopDriveTorqueSetPointActive"/></td></tr>
+        <tr><th>Weight On Bit (Calculated)</th><th>Weight On Bit Set Point</th></tr><tr><td><div id="divWeightOnBitCalculated"/></td><td><div id="divWeightOnBitSetPoint"/></td></tr>
+        <tr><th>Weight On Bit Set Point Active</th><th>&nbsp;</th></tr><tr><td><div id="divWeightOnBitSetPointActive"/></td><td><div id="divBlank"/></td></tr>
+</table>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+@section scripts {
+    <script type="text/javascript">
+        @{
+            var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+            var baseurl = urlHelper.Content("~");
+         }
+        var baseUrl = "@baseurl";
+
+        function DrawSingleLineGraph(variableName, divName) {
+            $('#' + divName).empty();
+            $('#' + divName).append("<span class='working'>Working on it...</span>");
+            $.getJSON(baseUrl + 'api/realTime?variableName=' + encodeURIComponent(variableName) + '&rigNumber=' + encodeURIComponent($('#rigNumber').val()), function (jsonPayload) {
+                $('#' + divName).empty();
+                if (jsonPayload.IsError) {
+                    $('#' + divName).append("<span class='errMessage'>" + jsonPayload.ErrorMessage + "</span>");
+                } else {
+                    new Morris.Line({
+                        // ID of the element in which to draw the chart.
+                        element: divName,
+                        // Chart data records -- each entry in this array corresponds to a point on
+                        // the chart.
+                        data: jsonPayload.Data,
+                        // The name of the data record attribute that contains x-values.
+                        xkey: 'Timestamp',
+                        // A list of names of data record attributes that contain y-values.
+                        ykeys: ['Value'],
+                        // Labels for the ykeys -- will be displayed when you hover over the
+                        // chart.
+                        labels: [variableName]
+                    });
+                }
+
+            });
+        }
+
+        function DrawText(variableName, divName) {
+            $('#' + divName).empty();
+            $('#' + divName).append("<span class='working'>Working on it...</span>");
+            $.getJSON(baseUrl + 'api/realTimeStringData/GetString?variableName=' + encodeURIComponent(variableName) + '&rigNumber=' + encodeURIComponent($('#rigNumber').val()), function (jsonPayload) {
+                $('#' + divName).empty();
+                if (jsonPayload.IsError) {
+                    $('#' + divName).append("<span class='errMessage'>" + jsonPayload.ErrorMessage + "</span>");
+                } else {
+                    for (var i = 0; i < jsonPayload.Data.length; i++) {
+                        var item = jsonPayload.Data[i];
+                        $('#' + divName).append('<span><strong>' + item.Timestamp + ': </strong>' + item.Value + '</span><br/>');
+                    }
+                }
+            });
+        }
+
+        $('#rigNumberGo').click(function () {
+            DrawSingleLineGraph('Bit Measured Depth', 'divBitMeasuredDepth');
+            DrawSingleLineGraph('Block Height', 'divBlockHeight');
+            DrawSingleLineGraph('Differential Pressure', 'divDifferentialPressure');
+            DrawSingleLineGraph('Differential Pressure Set Point', 'divDifferentialPressureSetPoint');
+            DrawText('Differential Pressure Set Point Active', 'divDifferentialPressureSetPointActive');
+            DrawSingleLineGraph('Generator 1 KW', 'divGenerator1KW');
+            DrawSingleLineGraph('Generator 2 KW', 'divGenerator2KW');
+            DrawSingleLineGraph('Generator 3 KW', 'divGenerator3KW');
+            DrawSingleLineGraph('Generator 4 KW', 'divGenerator4KW');
+            DrawSingleLineGraph('Hole Measured Depth', 'divHoleMeasuredDepth');
+            DrawSingleLineGraph('Hookload', 'divHookload');
+            DrawSingleLineGraph('Pump 1 SPM', 'divPump1SPM');
+            DrawSingleLineGraph('Pump 2 SPM', 'divPump2SPM');
+            DrawSingleLineGraph('Pump 3 SPM', 'divPump3SPM');
+            DrawSingleLineGraph('Left Degrees', 'divLeftDegrees');
+            DrawSingleLineGraph('Left Revolutions', 'divLeftRevolutions');
+            DrawSingleLineGraph('Left RPM', 'divLeftRPM');
+            DrawSingleLineGraph('Left Torque', 'divLeftTorque');
+            DrawSingleLineGraph('Right Degrees', 'divRightDegrees');
+            DrawSingleLineGraph('Right Revolutions', 'divRightRevolutions');
+            DrawSingleLineGraph('Right RPM', 'divRightRPM');
+            DrawSingleLineGraph('Right Torque', 'divRightTorque');
+            DrawSingleLineGraph('Rate of Penetration (ROP)', 'divRateofPenetrationROP');
+            DrawText('Rig State', 'divRigState');
+            DrawSingleLineGraph('ROP Set Point', 'divROPSetPoint');
+            DrawText('ROP Set Point Active', 'divROPSetPointActive');
+            DrawSingleLineGraph('Stand Pipe Pressure (SPP)', 'divStandPipePressureSPP');
+            DrawSingleLineGraph('Top Drive Torque', 'divTopDriveTorque');
+            DrawSingleLineGraph('Top Drive Torque Set Point', 'divTopDriveTorqueSetPoint');
+            DrawText('Top Drive Torque Set Point Active', 'divTopDriveTorqueSetPointActive');
+            DrawSingleLineGraph('Weight On Bit (Calculated)', 'divWeightOnBitCalculated');
+            DrawSingleLineGraph('Weight On Bit Set Point', 'divWeightOnBitSetPoint');
+            DrawText('Weight On Bit Set Point Active', 'divWeightOnBitSetPointActive');
+        });
+
+    </script>
+}

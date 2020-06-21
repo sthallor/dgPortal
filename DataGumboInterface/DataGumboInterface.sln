@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGumboInterface", "DataGumboInterface\DataGumboInterface.csproj", "{76FDCB53-45CC-40C1-8708-34AD40F55584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGumboInterfaceConsole", "DataGumboInterfaceConsole\DataGumboInterfaceConsole.csproj", "{B9D71151-9251-46F0-A5FD-D442CA9B08C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGumboInterfaceWeb", "DataGumboInterfaceWeb\DataGumboInterfaceWeb.csproj", "{FA35B70D-648D-4BFB-AD69-3CD9F2FB6EFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGumboInterfaceTest", "DataGumboInterfaceTest\DataGumboInterfaceTest.csproj", "{22373CF5-528F-4563-86E5-2ECE308C63A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackGoldDb", "BlackGoldDb\BlackGoldDb.csproj", "{1A21B32B-E29C-46E2-8554-1EEF494CD77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IgnitionDb", "IgnitionDb\IgnitionDb.csproj", "{A8FBE7BF-A42A-41E3-AA87-D6220092A48A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IgnitionSQLiteTagGen", "IgnitionSQLiteTagGen\IgnitionSQLiteTagGen.csproj", "{F4B1E4CD-C236-4E36-8884-D9009D7B2126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGumboBackfill", "DataGumboBackfill\DataGumboBackfill.csproj", "{865AC6B9-696C-400E-B0B1-2130FEB7C058}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriticalTagSQLiteGen", "CriticalTagSQLiteGen\CriticalTagSQLiteGen.csproj", "{C6C6FD2F-B64E-41E2-A476-EA0362938596}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://cal0-vp-tfs01:8080/tfs/ensign
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DataGumboInterface\\DataGumboInterface.csproj
+		SccProjectName1 = DataGumboInterface
+		SccLocalPath1 = DataGumboInterface
+		SccProjectUniqueName2 = DataGumboInterfaceConsole\\DataGumboInterfaceConsole.csproj
+		SccProjectName2 = DataGumboInterfaceConsole
+		SccLocalPath2 = DataGumboInterfaceConsole
+		SccProjectUniqueName3 = DataGumboInterfaceTest\\DataGumboInterfaceTest.csproj
+		SccProjectName3 = DataGumboInterfaceTest
+		SccLocalPath3 = DataGumboInterfaceTest
+		SccProjectUniqueName4 = DataGumboInterfaceWeb\\DataGumboInterfaceWeb.csproj
+		SccProjectName4 = DataGumboInterfaceWeb
+		SccLocalPath4 = DataGumboInterfaceWeb
+		SccProjectUniqueName5 = BlackGoldDb\\BlackGoldDb.csproj
+		SccProjectName5 = BlackGoldDb
+		SccLocalPath5 = BlackGoldDb
+		SccProjectUniqueName6 = IgnitionDb\\IgnitionDb.csproj
+		SccProjectName6 = IgnitionDb
+		SccLocalPath6 = IgnitionDb
+		SccProjectUniqueName7 = IgnitionSQLiteTagGen\\IgnitionSQLiteTagGen.csproj
+		SccProjectName7 = IgnitionSQLiteTagGen
+		SccLocalPath7 = IgnitionSQLiteTagGen
+		SccProjectUniqueName8 = DataGumboBackfill\\DataGumboBackfill.csproj
+		SccProjectName8 = DataGumboBackfill
+		SccLocalPath8 = DataGumboBackfill
+		SccProjectUniqueName9 = CriticalTagSQLiteGen\\CriticalTagSQLiteGen.csproj
+		SccProjectName9 = CriticalTagSQLiteGen
+		SccLocalPath9 = CriticalTagSQLiteGen
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76FDCB53-45CC-40C1-8708-34AD40F55584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FDCB53-45CC-40C1-8708-34AD40F55584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FDCB53-45CC-40C1-8708-34AD40F55584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FDCB53-45CC-40C1-8708-34AD40F55584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D71151-9251-46F0-A5FD-D442CA9B08C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D71151-9251-46F0-A5FD-D442CA9B08C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D71151-9251-46F0-A5FD-D442CA9B08C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D71151-9251-46F0-A5FD-D442CA9B08C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA35B70D-648D-4BFB-AD69-3CD9F2FB6EFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA35B70D-648D-4BFB-AD69-3CD9F2FB6EFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA35B70D-648D-4BFB-AD69-3CD9F2FB6EFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA35B70D-648D-4BFB-AD69-3CD9F2FB6EFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22373CF5-528F-4563-86E5-2ECE308C63A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22373CF5-528F-4563-86E5-2ECE308C63A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22373CF5-528F-4563-86E5-2ECE308C63A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22373CF5-528F-4563-86E5-2ECE308C63A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A21B32B-E29C-46E2-8554-1EEF494CD77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A21B32B-E29C-46E2-8554-1EEF494CD77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A21B32B-E29C-46E2-8554-1EEF494CD77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A21B32B-E29C-46E2-8554-1EEF494CD77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FBE7BF-A42A-41E3-AA87-D6220092A48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FBE7BF-A42A-41E3-AA87-D6220092A48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FBE7BF-A42A-41E3-AA87-D6220092A48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FBE7BF-A42A-41E3-AA87-D6220092A48A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B1E4CD-C236-4E36-8884-D9009D7B2126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B1E4CD-C236-4E36-8884-D9009D7B2126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B1E4CD-C236-4E36-8884-D9009D7B2126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B1E4CD-C236-4E36-8884-D9009D7B2126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{865AC6B9-696C-400E-B0B1-2130FEB7C058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865AC6B9-696C-400E-B0B1-2130FEB7C058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865AC6B9-696C-400E-B0B1-2130FEB7C058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865AC6B9-696C-400E-B0B1-2130FEB7C058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C6FD2F-B64E-41E2-A476-EA0362938596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C6FD2F-B64E-41E2-A476-EA0362938596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C6FD2F-B64E-41E2-A476-EA0362938596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C6FD2F-B64E-41E2-A476-EA0362938596}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

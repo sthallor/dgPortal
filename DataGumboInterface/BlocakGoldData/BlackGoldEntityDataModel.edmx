@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Blackgold_PRODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Well">
+          <Key>
+            <PropertyRef Name="WellID" />
+          </Key>
+          <Property Name="WellID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UWI" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveInd" Type="bit" Nullable="false" />
+          <Property Name="WellName" Type="nvarchar" MaxLength="255" />
+          <Property Name="JobNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="PPDMGuid" Type="nvarchar" MaxLength="60" />
+          <Property Name="WellNum" Type="nvarchar" MaxLength="36" />
+          <Property Name="SpudDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="RigReleaseDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ProvinceState_rProvinceStateID" Type="int" />
+          <Property Name="KBElev" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="KBElevUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="LegalSurveyType_rLegalSurveyTypeID" Type="int" />
+          <Property Name="Operator_BusinessAssociateID" Type="int" />
+          <Property Name="PrimarySource" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProfileType_rWellProfileTypeID" Type="int" />
+          <Property Name="DrillingDataDownloaded" Type="bit" Nullable="false" />
+          <Property Name="DrillTD" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="DrillTDUom" Type="nvarchar" MaxLength="20" />
+          <Property Name="WasLegacy22Data" Type="bit" Nullable="false" />
+          <Property Name="RowChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="RowCreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="LeaseName" Type="nvarchar" MaxLength="60" />
+          <Property Name="County" Type="nvarchar" MaxLength="60" />
+          <Property Name="WaterDepth" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="WaterDepthUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="AssignedField_FieldID" Type="int" />
+          <Property Name="CurrentClass_rWellClassID" Type="int" />
+          <Property Name="GroundElev" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="WellStatus_rWellStatusId" Type="int" />
+        </EntityType>
+        <EntityType Name="WellDrillBitPeriod">
+          <Key>
+            <PropertyRef Name="WellDrillBitPeriodID" />
+          </Key>
+          <Property Name="WellDrillBitPeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActiveInd" Type="bit" />
+          <Property Name="Source" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tour_WellDrillPeriodID" Type="int" />
+          <Property Name="BitIntervalObsNo" Type="int" />
+          <Property Name="AvgForceOnBit" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="AvgForceOnBitUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="AvgRotaryRPM" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="BaseDepth" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="BaseDepthUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TopDepth" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="TopDepthUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="DrillOpType_rWellDrillOpTypeID" Type="int" />
+          <Property Name="Torque" Type="decimal" Precision="13" Scale="5" />
+          <Property Name="TorqueUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="RowChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="RowCreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="DepthDrilledFormation_Ensign" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="WellDrillPeriod">
+          <Key>
+            <PropertyRef Name="WellDrillPeriodID" />
+          </Key>
+          <Property Name="WellDrillPeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Well_WellID" Type="int" Nullable="false" />
+          <Property Name="StartDateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
+          <Property Name="PeriodObsNo" Type="int" Nullable="false" />
+          <Property Name="ActiveInd" Type="bit" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BoilerFuel" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="BoilerFuelUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="Contractor_BusinessAssociateID" Type="int" />
+          <Property Name="ContractorRepName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContractorRepSignedInd" Type="bit" />
+          <Property Name="CumRigSafetyDays" Type="int" />
+          <Property Name="CumCrewSafetyDays" Type="int" />
+          <Property Name="EndDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="AFE_FinanceID" Type="int" />
+          <Property Name="HoleDragUp" Type="decimal" Precision="12" Scale="5" />
+          <Property Name="HoleDragDown" Type="decimal" Precision="12" Scale="5" />
+          <Property Name="HoleDragUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="HoleFillLength" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="HoleFillLengthUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="MudSystemType_rDrillingMediaID" Type="int" />
+          <Property Name="MudTypeOilInd" Type="bit" />
+          <Property Name="MudTypeWaterInd" Type="bit" />
+          <Property Name="Operator_BusinessAssociateID" Type="int" />
+          <Property Name="OperatorFuel" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="OperatorFuelUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="OperatorRepName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OperatorRepSignedInd" Type="bit" />
+          <Property Name="ReentryInd" Type="bit" />
+          <Property Name="ReportedRigName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ReportTimeType_rReportTimeTypeID" Type="int" />
+          <Property Name="RigFuel" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="RigFuelUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="SafetyMeetingTopic" Type="nvarchar" MaxLength="255" />
+          <Property Name="BHAWeight" Type="decimal" Precision="12" Scale="5" />
+          <Property Name="BHAWeightUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="DrillPipeSingleCount" Type="int" />
+          <Property Name="DrillPipeSingleLen" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="DrillPipeSingleLenUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="DrillPipeStandCount" Type="int" />
+          <Property Name="DrillPipeStandLen" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="DrillPipeStandLenUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="KBDownLength" Type="decimal" Precision="15" Scale="5" />
+          <Property Name="KBDownLengthUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="TotDrillToolWeight" Type="decimal" Precision="12" Scale="5" />
+          <Property Name="TotDrillToolWeightUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="CircPressure" Type="decimal" Precision="13" Scale="5" />
+          <Property Name="CircPressureUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="CircPressureType_rWellCircPressTypeID" Type="int" />
+          <Property Name="CampInd" Type="int" />
+          <Property Name="HookloadMax" Type="decimal" Precision="12" Scale="5" />
+          <Property Name="HookloadMaxUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="DrillerSignature" Type="nvarchar" MaxLength="40" />
+          <Property Name="CasingPressMax" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CasingPressMaxUOM" Type="nvarchar" MaxLength="20" />
+          <Property Name="CaodcMudAllowance" Type="bit" />
+          <Property Name="RowChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="RowCreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="TotDrillToolLength" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="TotDrillToolLengthUOM" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WellDrillPeriodRemark">
+          <Key>
+            <PropertyRef Name="WellDrillPeriodRemarkID" />
+          </Key>
+          <Property Name="WellDrillPeriodRemarkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActiveInd" Type="bit" />
+          <Property Name="Source" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tour_WellDrillPeriodID" Type="int" />
+          <Property Name="RemarkSeqNo" Type="int" />
+          <Property Name="RemarkType_rRemarkTypeID" Type="int" />
+          <Property Name="EffectiveDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="ExpiryDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Remark" Type="varchar" MaxLength="2000" />
+          <Property Name="RowChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="RowCreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="ActivityCodeDescriptionOverride" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="WellConnectTimes">
+          <Key>
+            <PropertyRef Name="WellConnectTimeID" />
+          </Key>
+          <Property Name="WellConnectTimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Well_WellID" Type="int" Nullable="false" />
+          <Property Name="RigNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ActivityDescription" Type="varchar" MaxLength="100" />
+          <Property Name="FromDepth" Type="float" />
+          <Property Name="ToDepth" Type="float" />
+          <Property Name="NumberOfConnections" Type="int" />
+          <Property Name="AvgWtoWConnectTime" Type="float" />
+          <Property Name="DrillerNames" Type="varchar" MaxLength="500" />
+          <Property Name="Remark" Type="varchar(max)" />
+          <Property Name="DataQualityVote" Type="float" />
+          <Property Name="AvgStoSConnectTime" Type="float" />
+          <Property Name="Warnings" Type="varchar" MaxLength="300" />
+          <Property Name="Missing" Type="float" />
+          <Property Name="RowCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="FromDateTime" Type="datetime" />
+          <Property Name="ToDateTime" Type="datetime" />
+          <Property Name="AvgReamCirculateConditionTime" Type="float" />
+          <Property Name="AvgSurveyTime" Type="float" />
+          <Property Name="SinglesOrStands" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WellTrippingSpeeds">
+          <Key>
+            <PropertyRef Name="WellTrippingSpeedID" />
+          </Key>
+          <Property Name="WellTrippingSpeedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Well_WellID" Type="int" Nullable="false" />
+          <Property Name="RigNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ActivityDescription" Type="varchar" MaxLength="100" />
+          <Property Name="FromDateTime" Type="datetime" />
+          <Property Name="ToDateTime" Type="datetime" />
+          <Property Name="ActiveTime" Type="float" />
+          <Property Name="DrillerNames" Type="varchar" MaxLength="500" />
+          <Property Name="Remark" Type="varchar(max)" />
+          <Property Name="DataQualityVote" Type="float" />
+          <Property Name="Warnings" Type="varchar" MaxLength="300" />
+          <Property Name="IsBitInCasing" Type="char" MaxLength="1" />
+          <Property Name="IsCrewHandlingBHA" Type="char" MaxLength="1" />
+          <Property Name="RemarkCodes" Type="varchar" MaxLength="50" />
+          <Property Name="Missing" Type="float" />
+          <Property Name="RowCreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ActiveDeltaBlockHeight" Type="float" />
+          <Property Name="ActiveDeltaBitDepth" Type="float" />
+          <Property Name="FromBitDepth" Type="float" />
+          <Property Name="ToBitDepth" Type="float" />
+          <Property Name="ActiveDistanceTravelled" Type="float" />
+          <Property Name="SinglesOrStands" Type="varchar" MaxLength="20" />
+          <Property Name="AvgStoSConnectTime" Type="float" />
+          <Property Name="NumberOfConnections" Type="int" />
+        </EntityType>
+        <Association Name="FK_WellConnectTimes_Well">
+          <End Role="Well" Type="Self.Well" Multiplicity="1" />
+          <End Role="WellConnectTimes" Type="Self.WellConnectTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Well">
+              <PropertyRef Name="WellID" />
+            </Principal>
+            <Dependent Role="WellConnectTimes">
+              <PropertyRef Name="Well_WellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellDrillBitPeriod_WellDrillPeriod">
+          <End Role="WellDrillPeriod" Type="Self.WellDrillPeriod" Multiplicity="0..1" />
+          <End Role="WellDrillBitPeriod" Type="Self.WellDrillBitPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WellDrillPeriod">
+              <PropertyRef Name="WellDrillPeriodID" />
+            </Principal>
+            <Dependent Role="WellDrillBitPeriod">
+              <PropertyRef Name="Tour_WellDrillPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellDrillPeriod">
+          <End Role="Well" Type="Self.Well" Multiplicity="1" />
+          <End Role="WellDrillPeriod" Type="Self.WellDrillPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Well">
+              <PropertyRef Name="WellID" />
+            </Principal>
+            <Dependent Role="WellDrillPeriod">
+              <PropertyRef Name="Well_WellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellDrillPeriodRemark_WellDrillPeriod">
+          <End Role="WellDrillPeriod" Type="Self.WellDrillPeriod" Multiplicity="0..1" />
+          <End Role="WellDrillPeriodRemark" Type="Self.WellDrillPeriodRemark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WellDrillPeriod">
+              <PropertyRef Name="WellDrillPeriodID" />
+            </Principal>
+            <Dependent Role="WellDrillPeriodRemark">
+              <PropertyRef Name="Tour_WellDrillPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellTrippingSpeeds_Well">
+          <End Role="Well" Type="Self.Well" Multiplicity="1" />
+          <End Role="WellTrippingSpeeds" Type="Self.WellTrippingSpeeds" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Well">
+              <PropertyRef Name="WellID" />
+            </Principal>
+            <Dependent Role="WellTrippingSpeeds">
+              <PropertyRef Name="Well_WellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Blackgold_PRODModelStoreContainer">
+          <EntitySet Name="Well" EntityType="Self.Well" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WellDrillBitPeriod" EntityType="Self.WellDrillBitPeriod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WellDrillPeriod" EntityType="Self.WellDrillPeriod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WellDrillPeriodRemark" EntityType="Self.WellDrillPeriodRemark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WellConnectTimes" EntityType="Self.WellConnectTimes" Schema="r" store:Type="Tables" />
+          <EntitySet Name="WellTrippingSpeeds" EntityType="Self.WellTrippingSpeeds" Schema="r" store:Type="Tables" />
+          <AssociationSet Name="FK_WellConnectTimes_Well" Association="Self.FK_WellConnectTimes_Well">
+            <End Role="Well" EntitySet="Well" />
+            <End Role="WellConnectTimes" EntitySet="WellConnectTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellDrillBitPeriod_WellDrillPeriod" Association="Self.FK_WellDrillBitPeriod_WellDrillPeriod">
+            <End Role="WellDrillPeriod" EntitySet="WellDrillPeriod" />
+            <End Role="WellDrillBitPeriod" EntitySet="WellDrillBitPeriod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellDrillPeriod" Association="Self.FK_WellDrillPeriod">
+            <End Role="Well" EntitySet="Well" />
+            <End Role="WellDrillPeriod" EntitySet="WellDrillPeriod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellDrillPeriodRemark_WellDrillPeriod" Association="Self.FK_WellDrillPeriodRemark_WellDrillPeriod">
+            <End Role="WellDrillPeriod" EntitySet="WellDrillPeriod" />
+            <End Role="WellDrillPeriodRemark" EntitySet="WellDrillPeriodRemark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellTrippingSpeeds_Well" Association="Self.FK_WellTrippingSpeeds_Well">
+            <End Role="Well" EntitySet="Well" />
+            <End Role="WellTrippingSpeeds" EntitySet="WellTrippingSpeeds" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Blackgold_PRODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Well">
+          <Key>
+            <PropertyRef Name="WellID" />
+          </Key>
+          <Property Name="WellID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UWI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveInd" Type="Boolean" Nullable="false" />
+          <Property Name="WellName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="JobNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PPDMGuid" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="WellNum" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="SpudDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="RigReleaseDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ProvinceState_rProvinceStateID" Type="Int32" />
+          <Property Name="KBElev" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="KBElevUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LegalSurveyType_rLegalSurveyTypeID" Type="Int32" />
+          <Property Name="Operator_BusinessAssociateID" Type="Int32" />
+          <Property Name="PrimarySource" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileType_rWellProfileTypeID" Type="Int32" />
+          <Property Name="DrillingDataDownloaded" Type="Boolean" Nullable="false" />
+          <Property Name="DrillTD" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="DrillTDUom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WasLegacy22Data" Type="Boolean" Nullable="false" />
+          <Property Name="RowChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="RowCreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="LeaseName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="County" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="WaterDepth" Type="Decimal" Precision="9" Scale="4" />
+          <Property Name="WaterDepthUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AssignedField_FieldID" Type="Int32" />
+          <Property Name="CurrentClass_rWellClassID" Type="Int32" />
+          <Property Name="GroundElev" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="WellStatus_rWellStatusId" Type="Int32" />
+          <NavigationProperty Name="WellConnectTimes" Relationship="Self.FK_WellConnectTimes_Well" FromRole="Well" ToRole="WellConnectTimes" />
+          <NavigationProperty Name="WellDrillPeriods" Relationship="Self.FK_WellDrillPeriod" FromRole="Well" ToRole="WellDrillPeriod" />
+          <NavigationProperty Name="WellTrippingSpeeds" Relationship="Self.FK_WellTrippingSpeeds_Well" FromRole="Well" ToRole="WellTrippingSpeeds" />
+        </EntityType>
+        <EntityType Name="WellDrillBitPeriod">
+          <Key>
+            <PropertyRef Name="WellDrillBitPeriodID" />
+          </Key>
+          <Property Name="WellDrillBitPeriodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActiveInd" Type="Boolean" />
+          <Property Name="Source" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tour_WellDrillPeriodID" Type="Int32" />
+          <Property Name="BitIntervalObsNo" Type="Int32" />
+          <Property Name="AvgForceOnBit" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="AvgForceOnBitUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AvgRotaryRPM" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="BaseDepth" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="BaseDepthUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TopDepth" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="TopDepthUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DrillOpType_rWellDrillOpTypeID" Type="Int32" />
+          <Property Name="Torque" Type="Decimal" Precision="13" Scale="5" />
+          <Property Name="TorqueUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RowChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="RowCreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="DepthDrilledFormation_Ensign" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WellDrillPeriod" Relationship="Self.FK_WellDrillBitPeriod_WellDrillPeriod" FromRole="WellDrillBitPeriod" ToRole="WellDrillPeriod" />
+        </EntityType>
+        <EntityType Name="WellDrillPeriod">
+          <Key>
+            <PropertyRef Name="WellDrillPeriodID" />
+          </Key>
+          <Property Name="WellDrillPeriodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Well_WellID" Type="Int32" Nullable="false" />
+          <Property Name="StartDateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <Property Name="PeriodObsNo" Type="Int32" Nullable="false" />
+          <Property Name="ActiveInd" Type="Boolean" Nullable="false" />
+          <Property Name="Source" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BoilerFuel" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="BoilerFuelUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Contractor_BusinessAssociateID" Type="Int32" />
+          <Property Name="ContractorRepName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContractorRepSignedInd" Type="Boolean" />
+          <Property Name="CumRigSafetyDays" Type="Int32" />
+          <Property Name="CumCrewSafetyDays" Type="Int32" />
+          <Property Name="EndDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="AFE_FinanceID" Type="Int32" />
+          <Property Name="HoleDragUp" Type="Decimal" Precision="12" Scale="5" />
+          <Property Name="HoleDragDown" Type="Decimal" Precision="12" Scale="5" />
+          <Property Name="HoleDragUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HoleFillLength" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="HoleFillLengthUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MudSystemType_rDrillingMediaID" Type="Int32" />
+          <Property Name="MudTypeOilInd" Type="Boolean" />
+          <Property Name="MudTypeWaterInd" Type="Boolean" />
+          <Property Name="Operator_BusinessAssociateID" Type="Int32" />
+          <Property Name="OperatorFuel" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="OperatorFuelUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorRepName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OperatorRepSignedInd" Type="Boolean" />
+          <Property Name="ReentryInd" Type="Boolean" />
+          <Property Name="ReportedRigName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ReportTimeType_rReportTimeTypeID" Type="Int32" />
+          <Property Name="RigFuel" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="RigFuelUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SafetyMeetingTopic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BHAWeight" Type="Decimal" Precision="12" Scale="5" />
+          <Property Name="BHAWeightUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DrillPipeSingleCount" Type="Int32" />
+          <Property Name="DrillPipeSingleLen" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="DrillPipeSingleLenUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DrillPipeStandCount" Type="Int32" />
+          <Property Name="DrillPipeStandLen" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="DrillPipeStandLenUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KBDownLength" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="KBDownLengthUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TotDrillToolWeight" Type="Decimal" Precision="12" Scale="5" />
+          <Property Name="TotDrillToolWeightUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CircPressure" Type="Decimal" Precision="13" Scale="5" />
+          <Property Name="CircPressureUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CircPressureType_rWellCircPressTypeID" Type="Int32" />
+          <Property Name="CampInd" Type="Int32" />
+          <Property Name="HookloadMax" Type="Decimal" Precision="12" Scale="5" />
+          <Property Name="HookloadMaxUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DrillerSignature" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CasingPressMax" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="CasingPressMaxUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CaodcMudAllowance" Type="Boolean" />
+          <Property Name="RowChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="RowCreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="TotDrillToolLength" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="TotDrillToolLengthUOM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Well" Relationship="Self.FK_WellDrillPeriod" FromRole="WellDrillPeriod" ToRole="Well" />
+          <NavigationProperty Name="WellDrillBitPeriods" Relationship="Self.FK_WellDrillBitPeriod_WellDrillPeriod" FromRole="WellDrillPeriod" ToRole="WellDrillBitPeriod" />
+          <NavigationProperty Name="WellDrillPeriodRemarks" Relationship="Self.FK_WellDrillPeriodRemark_WellDrillPeriod" FromRole="WellDrillPeriod" ToRole="WellDrillPeriodRemark" />
+        </EntityType>
+        <EntityType Name="WellDrillPeriodRemark">
+          <Key>
+            <PropertyRef Name="WellDrillPeriodRemarkID" />
+          </Key>
+          <Property Name="WellDrillPeriodRemarkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActiveInd" Type="Boolean" />
+          <Property Name="Source" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tour_WellDrillPeriodID" Type="Int32" />
+          <Property Name="RemarkSeqNo" Type="Int32" />
+          <Property Name="RemarkType_rRemarkTypeID" Type="Int32" />
+          <Property Name="EffectiveDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ExpiryDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="RowChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="RowCreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="ActivityCodeDescriptionOverride" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WellDrillPeriod" Relationship="Self.FK_WellDrillPeriodRemark_WellDrillPeriod" FromRole="WellDrillPeriodRemark" ToRole="WellDrillPeriod" />
+        </EntityType>
+        <EntityType Name="WellConnectTime">
+          <Key>
+            <PropertyRef Name="WellConnectTimeID" />
+          </Key>
+          <Property Name="WellConnectTimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Well_WellID" Type="Int32" Nullable="false" />
+          <Property Name="RigNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FromDepth" Type="Double" />
+          <Property Name="ToDepth" Type="Double" />
+          <Property Name="NumberOfConnections" Type="Int32" />
+          <Property Name="AvgWtoWConnectTime" Type="Double" />
+          <Property Name="DrillerNames" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataQualityVote" Type="Double" />
+          <Property Name="AvgStoSConnectTime" Type="Double" />
+          <Property Name="Warnings" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Missing" Type="Double" />
+          <Property Name="RowCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FromDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ToDateTime" Type="DateTime" Precision="3" />
+          <Property Name="AvgReamCirculateConditionTime" Type="Double" />
+          <Property Name="AvgSurveyTime" Type="Double" />
+          <Property Name="SinglesOrStands" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Well" Relationship="Self.FK_WellConnectTimes_Well" FromRole="WellConnectTimes" ToRole="Well" />
+        </EntityType>
+        <EntityType Name="WellTrippingSpeed">
+          <Key>
+            <PropertyRef Name="WellTrippingSpeedID" />
+          </Key>
+          <Property Name="WellTrippingSpeedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Well_WellID" Type="Int32" Nullable="false" />
+          <Property Name="RigNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ActivityDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FromDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ToDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ActiveTime" Type="Double" />
+          <Property Name="DrillerNames" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DataQualityVote" Type="Double" />
+          <Property Name="Warnings" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="IsBitInCasing" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IsCrewHandlingBHA" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RemarkCodes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Missing" Type="Double" />
+          <Property Name="RowCreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActiveDeltaBlockHeight" Type="Double" />
+          <Property Name="ActiveDeltaBitDepth" Type="Double" />
+          <Property Name="FromBitDepth" Type="Double" />
+          <Property Name="ToBitDepth" Type="Double" />
+          <Property Name="ActiveDistanceTravelled" Type="Double" />
+          <Property Name="SinglesOrStands" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AvgStoSConnectTime" Type="Double" />
+          <Property Name="NumberOfConnections" Type="Int32" />
+          <NavigationProperty Name="Well" Relationship="Self.FK_WellTrippingSpeeds_Well" FromRole="WellTrippingSpeeds" ToRole="Well" />
+        </EntityType>
+        <Association Name="FK_WellConnectTimes_Well">
+          <End Role="Well" Type="Self.Well" Multiplicity="1" />
+          <End Role="WellConnectTimes" Type="Self.WellConnectTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Well">
+              <PropertyRef Name="WellID" />
+            </Principal>
+            <Dependent Role="WellConnectTimes">
+              <PropertyRef Name="Well_WellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellDrillPeriod">
+          <End Role="Well" Type="Self.Well" Multiplicity="1" />
+          <End Role="WellDrillPeriod" Type="Self.WellDrillPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Well">
+              <PropertyRef Name="WellID" />
+            </Principal>
+            <Dependent Role="WellDrillPeriod">
+              <PropertyRef Name="Well_WellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellTrippingSpeeds_Well">
+          <End Role="Well" Type="Self.Well" Multiplicity="1" />
+          <End Role="WellTrippingSpeeds" Type="Self.WellTrippingSpeed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Well">
+              <PropertyRef Name="WellID" />
+            </Principal>
+            <Dependent Role="WellTrippingSpeeds">
+              <PropertyRef Name="Well_WellID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellDrillBitPeriod_WellDrillPeriod">
+          <End Role="WellDrillPeriod" Type="Self.WellDrillPeriod" Multiplicity="0..1" />
+          <End Role="WellDrillBitPeriod" Type="Self.WellDrillBitPeriod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WellDrillPeriod">
+              <PropertyRef Name="WellDrillPeriodID" />
+            </Principal>
+            <Dependent Role="WellDrillBitPeriod">
+              <PropertyRef Name="Tour_WellDrillPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WellDrillPeriodRemark_WellDrillPeriod">
+          <End Role="WellDrillPeriod" Type="Self.WellDrillPeriod" Multiplicity="0..1" />
+          <End Role="WellDrillPeriodRemark" Type="Self.WellDrillPeriodRemark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WellDrillPeriod">
+              <PropertyRef Name="WellDrillPeriodID" />
+            </Principal>
+            <Dependent Role="WellDrillPeriodRemark">
+              <PropertyRef Name="Tour_WellDrillPeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Blackgold_PRODEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Wells" EntityType="Self.Well" />
+          <EntitySet Name="WellDrillBitPeriods" EntityType="Self.WellDrillBitPeriod" />
+          <EntitySet Name="WellDrillPeriods" EntityType="Self.WellDrillPeriod" />
+          <EntitySet Name="WellDrillPeriodRemarks" EntityType="Self.WellDrillPeriodRemark" />
+          <EntitySet Name="WellConnectTimes" EntityType="Self.WellConnectTime" />
+          <EntitySet Name="WellTrippingSpeeds" EntityType="Self.WellTrippingSpeed" />
+          <AssociationSet Name="FK_WellConnectTimes_Well" Association="Self.FK_WellConnectTimes_Well">
+            <End Role="Well" EntitySet="Wells" />
+            <End Role="WellConnectTimes" EntitySet="WellConnectTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellDrillPeriod" Association="Self.FK_WellDrillPeriod">
+            <End Role="Well" EntitySet="Wells" />
+            <End Role="WellDrillPeriod" EntitySet="WellDrillPeriods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellTrippingSpeeds_Well" Association="Self.FK_WellTrippingSpeeds_Well">
+            <End Role="Well" EntitySet="Wells" />
+            <End Role="WellTrippingSpeeds" EntitySet="WellTrippingSpeeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellDrillBitPeriod_WellDrillPeriod" Association="Self.FK_WellDrillBitPeriod_WellDrillPeriod">
+            <End Role="WellDrillPeriod" EntitySet="WellDrillPeriods" />
+            <End Role="WellDrillBitPeriod" EntitySet="WellDrillBitPeriods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WellDrillPeriodRemark_WellDrillPeriod" Association="Self.FK_WellDrillPeriodRemark_WellDrillPeriod">
+            <End Role="WellDrillPeriod" EntitySet="WellDrillPeriods" />
+            <End Role="WellDrillPeriodRemark" EntitySet="WellDrillPeriodRemarks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Blackgold_PRODModelStoreContainer" CdmEntityContainer="Blackgold_PRODEntities">
+          <EntitySetMapping Name="Wells">
+            <EntityTypeMapping TypeName="Blackgold_PRODModel.Well">
+              <MappingFragment StoreEntitySet="Well">
+                <ScalarProperty Name="WellID" ColumnName="WellID" />
+                <ScalarProperty Name="UWI" ColumnName="UWI" />
+                <ScalarProperty Name="ActiveInd" ColumnName="ActiveInd" />
+                <ScalarProperty Name="WellName" ColumnName="WellName" />
+                <ScalarProperty Name="JobNum" ColumnName="JobNum" />
+                <ScalarProperty Name="PPDMGuid" ColumnName="PPDMGuid" />
+                <ScalarProperty Name="WellNum" ColumnName="WellNum" />
+                <ScalarProperty Name="SpudDate" ColumnName="SpudDate" />
+                <ScalarProperty Name="RigReleaseDate" ColumnName="RigReleaseDate" />
+                <ScalarProperty Name="ProvinceState_rProvinceStateID" ColumnName="ProvinceState_rProvinceStateID" />
+                <ScalarProperty Name="KBElev" ColumnName="KBElev" />
+                <ScalarProperty Name="KBElevUOM" ColumnName="KBElevUOM" />
+                <ScalarProperty Name="LegalSurveyType_rLegalSurveyTypeID" ColumnName="LegalSurveyType_rLegalSurveyTypeID" />
+                <ScalarProperty Name="Operator_BusinessAssociateID" ColumnName="Operator_BusinessAssociateID" />
+                <ScalarProperty Name="PrimarySource" ColumnName="PrimarySource" />
+                <ScalarProperty Name="ProfileType_rWellProfileTypeID" ColumnName="ProfileType_rWellProfileTypeID" />
+                <ScalarProperty Name="DrillingDataDownloaded" ColumnName="DrillingDataDownloaded" />
+                <ScalarProperty Name="DrillTD" ColumnName="DrillTD" />
+                <ScalarProperty Name="DrillTDUom" ColumnName="DrillTDUom" />
+                <ScalarProperty Name="WasLegacy22Data" ColumnName="WasLegacy22Data" />
+                <ScalarProperty Name="RowChangedDate" ColumnName="RowChangedDate" />
+                <ScalarProperty Name="RowCreatedDate" ColumnName="RowCreatedDate" />
+                <ScalarProperty Name="LeaseName" ColumnName="LeaseName" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="WaterDepth" ColumnName="WaterDepth" />
+                <ScalarProperty Name="WaterDepthUOM" ColumnName="WaterDepthUOM" />
+                <ScalarProperty Name="AssignedField_FieldID" ColumnName="AssignedField_FieldID" />
+                <ScalarProperty Name="CurrentClass_rWellClassID" ColumnName="CurrentClass_rWellClassID" />
+                <ScalarProperty Name="GroundElev" ColumnName="GroundElev" />
+                <ScalarProperty Name="WellStatus_rWellStatusId" ColumnName="WellStatus_rWellStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WellDrillBitPeriods">
+            <EntityTypeMapping TypeName="Blackgold_PRODModel.WellDrillBitPeriod">
+              <MappingFragment StoreEntitySet="WellDrillBitPeriod">
+                <ScalarProperty Name="WellDrillBitPeriodID" ColumnName="WellDrillBitPeriodID" />
+                <ScalarProperty Name="ActiveInd" ColumnName="ActiveInd" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Tour_WellDrillPeriodID" ColumnName="Tour_WellDrillPeriodID" />
+                <ScalarProperty Name="BitIntervalObsNo" ColumnName="BitIntervalObsNo" />
+                <ScalarProperty Name="AvgForceOnBit" ColumnName="AvgForceOnBit" />
+                <ScalarProperty Name="AvgForceOnBitUOM" ColumnName="AvgForceOnBitUOM" />
+                <ScalarProperty Name="AvgRotaryRPM" ColumnName="AvgRotaryRPM" />
+                <ScalarProperty Name="BaseDepth" ColumnName="BaseDepth" />
+                <ScalarProperty Name="BaseDepthUOM" ColumnName="BaseDepthUOM" />
+                <ScalarProperty Name="TopDepth" ColumnName="TopDepth" />
+                <ScalarProperty Name="TopDepthUOM" ColumnName="TopDepthUOM" />
+                <ScalarProperty Name="DrillOpType_rWellDrillOpTypeID" ColumnName="DrillOpType_rWellDrillOpTypeID" />
+                <ScalarProperty Name="Torque" ColumnName="Torque" />
+                <ScalarProperty Name="TorqueUOM" ColumnName="TorqueUOM" />
+                <ScalarProperty Name="RowChangedDate" ColumnName="RowChangedDate" />
+                <ScalarProperty Name="RowCreatedDate" ColumnName="RowCreatedDate" />
+                <ScalarProperty Name="DepthDrilledFormation_Ensign" ColumnName="DepthDrilledFormation_Ensign" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WellDrillPeriods">
+            <EntityTypeMapping TypeName="Blackgold_PRODModel.WellDrillPeriod">
+              <MappingFragment StoreEntitySet="WellDrillPeriod">
+                <ScalarProperty Name="WellDrillPeriodID" ColumnName="WellDrillPeriodID" />
+                <ScalarProperty Name="Well_WellID" ColumnName="Well_WellID" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="PeriodObsNo" ColumnName="PeriodObsNo" />
+                <ScalarProperty Name="ActiveInd" ColumnName="ActiveInd" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="BoilerFuel" ColumnName="BoilerFuel" />
+                <ScalarProperty Name="BoilerFuelUOM" ColumnName="BoilerFuelUOM" />
+                <ScalarProperty Name="Contractor_BusinessAssociateID" ColumnName="Contractor_BusinessAssociateID" />
+                <ScalarProperty Name="ContractorRepName" ColumnName="ContractorRepName" />
+                <ScalarProperty Name="ContractorRepSignedInd" ColumnName="ContractorRepSignedInd" />
+                <ScalarProperty Name="CumRigSafetyDays" ColumnName="CumRigSafetyDays" />
+                <ScalarProperty Name="CumCrewSafetyDays" ColumnName="CumCrewSafetyDays" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="AFE_FinanceID" ColumnName="AFE_FinanceID" />
+                <ScalarProperty Name="HoleDragUp" ColumnName="HoleDragUp" />
+                <ScalarProperty Name="HoleDragDown" ColumnName="HoleDragDown" />
+                <ScalarProperty Name="HoleDragUOM" ColumnName="HoleDragUOM" />
+                <ScalarProperty Name="HoleFillLength" ColumnName="HoleFillLength" />
+                <ScalarProperty Name="HoleFillLengthUOM" ColumnName="HoleFillLengthUOM" />
+                <ScalarProperty Name="MudSystemType_rDrillingMediaID" ColumnName="MudSystemType_rDrillingMediaID" />
+                <ScalarProperty Name="MudTypeOilInd" ColumnName="MudTypeOilInd" />
+                <ScalarProperty Name="MudTypeWaterInd" ColumnName="MudTypeWaterInd" />
+                <ScalarProperty Name="Operator_BusinessAssociateID" ColumnName="Operator_BusinessAssociateID" />
+                <ScalarProperty Name="OperatorFuel" ColumnName="OperatorFuel" />
+                <ScalarProperty Name="OperatorFuelUOM" ColumnName="OperatorFuelUOM" />
+                <ScalarProperty Name="OperatorRepName" ColumnName="OperatorRepName" />
+                <ScalarProperty Name="OperatorRepSignedInd" ColumnName="OperatorRepSignedInd" />
+                <ScalarProperty Name="ReentryInd" ColumnName="ReentryInd" />
+                <ScalarProperty Name="ReportedRigName" ColumnName="ReportedRigName" />
+                <ScalarProperty Name="ReportTimeType_rReportTimeTypeID" ColumnName="ReportTimeType_rReportTimeTypeID" />
+                <ScalarProperty Name="RigFuel" ColumnName="RigFuel" />
+                <ScalarProperty Name="RigFuelUOM" ColumnName="RigFuelUOM" />
+                <ScalarProperty Name="SafetyMeetingTopic" ColumnName="SafetyMeetingTopic" />
+                <ScalarProperty Name="BHAWeight" ColumnName="BHAWeight" />
+                <ScalarProperty Name="BHAWeightUOM" ColumnName="BHAWeightUOM" />
+                <ScalarProperty Name="DrillPipeSingleCount" ColumnName="DrillPipeSingleCount" />
+                <ScalarProperty Name="DrillPipeSingleLen" ColumnName="DrillPipeSingleLen" />
+                <ScalarProperty Name="DrillPipeSingleLenUOM" ColumnName="DrillPipeSingleLenUOM" />
+                <ScalarProperty Name="DrillPipeStandCount" ColumnName="DrillPipeStandCount" />
+                <ScalarProperty Name="DrillPipeStandLen" ColumnName="DrillPipeStandLen" />
+                <ScalarProperty Name="DrillPipeStandLenUOM" ColumnName="DrillPipeStandLenUOM" />
+                <ScalarProperty Name="KBDownLength" ColumnName="KBDownLength" />
+                <ScalarProperty Name="KBDownLengthUOM" ColumnName="KBDownLengthUOM" />
+                <ScalarProperty Name="TotDrillToolWeight" ColumnName="TotDrillToolWeight" />
+                <ScalarProperty Name="TotDrillToolWeightUOM" ColumnName="TotDrillToolWeightUOM" />
+                <ScalarProperty Name="CircPressure" ColumnName="CircPressure" />
+                <ScalarProperty Name="CircPressureUOM" ColumnName="CircPressureUOM" />
+                <ScalarProperty Name="CircPressureType_rWellCircPressTypeID" ColumnName="CircPressureType_rWellCircPressTypeID" />
+                <ScalarProperty Name="CampInd" ColumnName="CampInd" />
+                <ScalarProperty Name="HookloadMax" ColumnName="HookloadMax" />
+                <ScalarProperty Name="HookloadMaxUOM" ColumnName="HookloadMaxUOM" />
+                <ScalarProperty Name="DrillerSignature" ColumnName="DrillerSignature" />
+                <ScalarProperty Name="CasingPressMax" ColumnName="CasingPressMax" />
+                <ScalarProperty Name="CasingPressMaxUOM" ColumnName="CasingPressMaxUOM" />
+                <ScalarProperty Name="CaodcMudAllowance" ColumnName="CaodcMudAllowance" />
+                <ScalarProperty Name="RowChangedDate" ColumnName="RowChangedDate" />
+                <ScalarProperty Name="RowCreatedDate" ColumnName="RowCreatedDate" />
+                <ScalarProperty Name="TotDrillToolLength" ColumnName="TotDrillToolLength" />
+                <ScalarProperty Name="TotDrillToolLengthUOM" ColumnName="TotDrillToolLengthUOM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WellDrillPeriodRemarks">
+            <EntityTypeMapping TypeName="Blackgold_PRODModel.WellDrillPeriodRemark">
+              <MappingFragment StoreEntitySet="WellDrillPeriodRemark">
+                <ScalarProperty Name="WellDrillPeriodRemarkID" ColumnName="WellDrillPeriodRemarkID" />
+                <ScalarProperty Name="ActiveInd" ColumnName="ActiveInd" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Tour_WellDrillPeriodID" ColumnName="Tour_WellDrillPeriodID" />
+                <ScalarProperty Name="RemarkSeqNo" ColumnName="RemarkSeqNo" />
+                <ScalarProperty Name="RemarkType_rRemarkTypeID" ColumnName="RemarkType_rRemarkTypeID" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="RowChangedDate" ColumnName="RowChangedDate" />
+                <ScalarProperty Name="RowCreatedDate" ColumnName="RowCreatedDate" />
+                <ScalarProperty Name="ActivityCodeDescriptionOverride" ColumnName="ActivityCodeDescriptionOverride" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WellConnectTimes">
+            <EntityTypeMapping TypeName="Blackgold_PRODModel.WellConnectTime">
+              <MappingFragment StoreEntitySet="WellConnectTimes">
+                <ScalarProperty Name="WellConnectTimeID" ColumnName="WellConnectTimeID" />
+                <ScalarProperty Name="Well_WellID" ColumnName="Well_WellID" />
+                <ScalarProperty Name="RigNumber" ColumnName="RigNumber" />
+                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+                <ScalarProperty Name="FromDepth" ColumnName="FromDepth" />
+                <ScalarProperty Name="ToDepth" ColumnName="ToDepth" />
+                <ScalarProperty Name="NumberOfConnections" ColumnName="NumberOfConnections" />
+                <ScalarProperty Name="AvgWtoWConnectTime" ColumnName="AvgWtoWConnectTime" />
+                <ScalarProperty Name="DrillerNames" ColumnName="DrillerNames" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DataQualityVote" ColumnName="DataQualityVote" />
+                <ScalarProperty Name="AvgStoSConnectTime" ColumnName="AvgStoSConnectTime" />
+                <ScalarProperty Name="Warnings" ColumnName="Warnings" />
+                <ScalarProperty Name="Missing" ColumnName="Missing" />
+                <ScalarProperty Name="RowCreatedDate" ColumnName="RowCreatedDate" />
+                <ScalarProperty Name="FromDateTime" ColumnName="FromDateTime" />
+                <ScalarProperty Name="ToDateTime" ColumnName="ToDateTime" />
+                <ScalarProperty Name="AvgReamCirculateConditionTime" ColumnName="AvgReamCirculateConditionTime" />
+                <ScalarProperty Name="AvgSurveyTime" ColumnName="AvgSurveyTime" />
+                <ScalarProperty Name="SinglesOrStands" ColumnName="SinglesOrStands" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WellTrippingSpeeds">
+            <EntityTypeMapping TypeName="Blackgold_PRODModel.WellTrippingSpeed">
+              <MappingFragment StoreEntitySet="WellTrippingSpeeds">
+                <ScalarProperty Name="WellTrippingSpeedID" ColumnName="WellTrippingSpeedID" />
+                <ScalarProperty Name="Well_WellID" ColumnName="Well_WellID" />
+                <ScalarProperty Name="RigNumber" ColumnName="RigNumber" />
+                <ScalarProperty Name="ActivityDescription" ColumnName="ActivityDescription" />
+                <ScalarProperty Name="FromDateTime" ColumnName="FromDateTime" />
+                <ScalarProperty Name="ToDateTime" ColumnName="ToDateTime" />
+                <ScalarProperty Name="ActiveTime" ColumnName="ActiveTime" />
+                <ScalarProperty Name="DrillerNames" ColumnName="DrillerNames" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="DataQualityVote" ColumnName="DataQualityVote" />
+                <ScalarProperty Name="Warnings" ColumnName="Warnings" />
+                <ScalarProperty Name="IsBitInCasing" ColumnName="IsBitInCasing" />
+                <ScalarProperty Name="IsCrewHandlingBHA" ColumnName="IsCrewHandlingBHA" />
+                <ScalarProperty Name="RemarkCodes" ColumnName="RemarkCodes" />
+                <ScalarProperty Name="Missing" ColumnName="Missing" />
+                <ScalarProperty Name="RowCreatedDate" ColumnName="RowCreatedDate" />
+                <ScalarProperty Name="ActiveDeltaBlockHeight" ColumnName="ActiveDeltaBlockHeight" />
+                <ScalarProperty Name="ActiveDeltaBitDepth" ColumnName="ActiveDeltaBitDepth" />
+                <ScalarProperty Name="FromBitDepth" ColumnName="FromBitDepth" />
+                <ScalarProperty Name="ToBitDepth" ColumnName="ToBitDepth" />
+                <ScalarProperty Name="ActiveDistanceTravelled" ColumnName="ActiveDistanceTravelled" />
+                <ScalarProperty Name="SinglesOrStands" ColumnName="SinglesOrStands" />
+                <ScalarProperty Name="AvgStoSConnectTime" ColumnName="AvgStoSConnectTime" />
+                <ScalarProperty Name="NumberOfConnections" ColumnName="NumberOfConnections" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

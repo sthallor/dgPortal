@@ -1,0 +1,134 @@
+﻿<div id="body">
+    <form id="saveCustomerForm" method="post">
+        <table>
+            <tr>
+                <td>
+                    Customer ID:
+                </td>
+                <td>
+                    <input type="text" id="customerId" name="customerId" value="35006"/><input type="button" id="customerGetButton" title="Get the Customer Data" value="Go" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Customer Name:
+                </td>
+                <td>
+                    <input type="text" id="customerName" name="customerName" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Active Ind:
+                </td>
+                <td>
+                    <input type="text" id="activeInd" name="activeInd" value="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Parent Customer ID:
+                </td>
+                <td>
+                    <input type="text" id="parentCustomerId" name="parentCustomerId" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PBI Application ID:
+                </td>
+                <td>
+                    <input type="text" id="pbiApplicationId" name="pbiApplicationId" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PBI Workspace ID:
+                </td>
+                <td>
+                    <input type="text" id="pbiWorkspaceId" name="pbiWorkspaceId" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PBI User:
+                </td>
+                <td>
+                    <input type="text" id="pbiUser" name="pbiUser" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PBI Password:
+                </td>
+                <td>
+                    <input type="text" id="pbiPassword" name="pbiPassword" value=""/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" id="customerSaveButton" title="Save the Customer Data" value="Save" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        @{
+            var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+            var baseurl = urlHelper.Content("~");
+         }
+        var baseUrl = "@baseurl";
+
+        function fillCustomer(customerId) {
+            $.getJSON(baseUrl + 'api/customer/' + customerId, function (customerJsonPayload) {
+                $('#customerName').val(customerJsonPayload.customerName);
+                $('#activeInd').val(customerJsonPayload.activeInd);
+                $('#parentCustomerId').val(customerJsonPayload.parentCustomerId);
+                $('#pbiApplicationId').val(customerJsonPayload.pbiApplicationId);
+                $('#pbiWorkspaceId').val(customerJsonPayload.pbiWorkspaceId);
+                $('#pbiUser').val(customerJsonPayload.pbiUser);
+                $('#pbiPassword').val(customerJsonPayload.pbiPassword);
+            }
+            );
+        }
+
+        (function ($) {
+            $.fn.serializeAll = function () {
+                var data = $(this).serializeArray();
+
+                $(':disabled[name]', this).each(function () {
+                    data.push({ name: this.name, value: $(this).val() });
+                });
+
+                return data;
+            }
+        })(jQuery);
+
+        function saveCustomer() {
+            $.ajax({
+                url: baseUrl + "api/customer/" + $('#customerId').val(), type: 'POST', data: $("#saveCustomerForm").serializeAll(),
+                success:
+                    function (value, textStatus, request) {
+                        alert("Success");
+                    },
+                error: function (request) {
+                        alert("Fail");
+                    }
+            });
+
+        }
+
+
+        $('#customerGetButton').click(function () {
+            fillCustomer(encodeURIComponent($('#customerId').val()));
+        });
+
+        $('#customerSaveButton').click(function () {
+            saveCustomer();
+        });
+
+    </script>
+}

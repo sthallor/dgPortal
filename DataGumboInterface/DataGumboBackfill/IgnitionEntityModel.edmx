@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IgnitionEnterpriseReportingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IgnitionEnterpriseReporting.dbo.sqlth_1_data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sqlth_1_data">
+          <Key>
+            <PropertyRef Name="tagid" />
+            <PropertyRef Name="t_stamp" />
+          </Key>
+          <Property Name="tagid" Type="int" Nullable="false" />
+          <Property Name="intvalue" Type="bigint" />
+          <Property Name="floatvalue" Type="float" />
+          <Property Name="stringvalue" Type="varchar" MaxLength="8000" />
+          <Property Name="datevalue" Type="datetime" />
+          <Property Name="dataintegrity" Type="int" />
+          <Property Name="t_stamp" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IgnitionEnterpriseReporting.dbo.sqlth_1_data_20191016' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sqlth_1_data_20191016">
+          <Key>
+            <PropertyRef Name="tagid" />
+            <PropertyRef Name="t_stamp" />
+          </Key>
+          <Property Name="tagid" Type="int" Nullable="false" />
+          <Property Name="intvalue" Type="bigint" />
+          <Property Name="floatvalue" Type="float" />
+          <Property Name="stringvalue" Type="varchar" MaxLength="8000" />
+          <Property Name="datevalue" Type="datetime" />
+          <Property Name="dataintegrity" Type="int" />
+          <Property Name="t_stamp" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sqlth_drv">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="provider" Type="varchar" MaxLength="255" />
+          <Property Name="nice_name" Type="varchar" MaxLength="255" />
+          <Property Name="division" Type="varchar" MaxLength="255" />
+          <Property Name="active" Type="char" MaxLength="1" />
+          <Property Name="control_system" Type="varchar" MaxLength="255" />
+          <Property Name="EGN" Type="varchar" MaxLength="20" />
+          <Property Name="rig_status" Type="varchar" MaxLength="20" />
+          <Property Name="hist_prov_date" Type="smalldatetime" />
+          <Property Name="edge_prov_date" Type="smalldatetime" />
+          <Property Name="ace_os_prov_date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="sqlth_sce">
+          <Key>
+            <PropertyRef Name="scid" />
+            <PropertyRef Name="start_time" />
+            <PropertyRef Name="end_time" />
+            <PropertyRef Name="rate" />
+          </Key>
+          <Property Name="scid" Type="int" Nullable="false" />
+          <Property Name="start_time" Type="bigint" Nullable="false" />
+          <Property Name="end_time" Type="bigint" Nullable="false" />
+          <Property Name="rate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sqlth_scinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="scname" Type="varchar" MaxLength="255" />
+          <Property Name="drvid" Type="int" />
+        </EntityType>
+        <EntityType Name="sqlth_te">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tagpath" Type="varchar" MaxLength="255" />
+          <Property Name="scid" Type="int" />
+          <Property Name="datatype" Type="int" />
+          <Property Name="querymode" Type="int" />
+          <Property Name="created" Type="bigint" />
+          <Property Name="retired" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="IgnitionEnterpriseReportingModelStoreContainer">
+          <EntitySet Name="sqlth_drv" EntityType="Self.sqlth_drv" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sqlth_sce" EntityType="Self.sqlth_sce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sqlth_scinfo" EntityType="Self.sqlth_scinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sqlth_te" EntityType="Self.sqlth_te" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sqlth_1_data" EntityType="Self.sqlth_1_data" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sqlth_1_data].[tagid] AS [tagid], 
+    [sqlth_1_data].[intvalue] AS [intvalue], 
+    [sqlth_1_data].[floatvalue] AS [floatvalue], 
+    [sqlth_1_data].[stringvalue] AS [stringvalue], 
+    [sqlth_1_data].[datevalue] AS [datevalue], 
+    [sqlth_1_data].[dataintegrity] AS [dataintegrity], 
+    [sqlth_1_data].[t_stamp] AS [t_stamp]
+    FROM [dbo].[sqlth_1_data] AS [sqlth_1_data]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sqlth_1_data_20191016" EntityType="Self.sqlth_1_data_20191016" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sqlth_1_data_20191016].[tagid] AS [tagid], 
+    [sqlth_1_data_20191016].[intvalue] AS [intvalue], 
+    [sqlth_1_data_20191016].[floatvalue] AS [floatvalue], 
+    [sqlth_1_data_20191016].[stringvalue] AS [stringvalue], 
+    [sqlth_1_data_20191016].[datevalue] AS [datevalue], 
+    [sqlth_1_data_20191016].[dataintegrity] AS [dataintegrity], 
+    [sqlth_1_data_20191016].[t_stamp] AS [t_stamp]
+    FROM [dbo].[sqlth_1_data_20191016] AS [sqlth_1_data_20191016]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IgnitionEnterpriseReportingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sqlth_drv">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="provider" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nice_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="division" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="control_system" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EGN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rig_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="hist_prov_date" Type="DateTime" Precision="0" />
+          <Property Name="edge_prov_date" Type="DateTime" Precision="0" />
+          <Property Name="ace_os_prov_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sqlth_sce">
+          <Key>
+            <PropertyRef Name="scid" />
+            <PropertyRef Name="start_time" />
+            <PropertyRef Name="end_time" />
+            <PropertyRef Name="rate" />
+          </Key>
+          <Property Name="scid" Type="Int32" Nullable="false" />
+          <Property Name="start_time" Type="Int64" Nullable="false" />
+          <Property Name="end_time" Type="Int64" Nullable="false" />
+          <Property Name="rate" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sqlth_scinfo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="scname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="drvid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sqlth_te">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tagpath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="scid" Type="Int32" />
+          <Property Name="datatype" Type="Int32" />
+          <Property Name="querymode" Type="Int32" />
+          <Property Name="created" Type="Int64" />
+          <Property Name="retired" Type="Int64" />
+        </EntityType>
+        <EntityType Name="sqlth_1_data">
+          <Key>
+            <PropertyRef Name="tagid" />
+            <PropertyRef Name="t_stamp" />
+          </Key>
+          <Property Name="tagid" Type="Int32" Nullable="false" />
+          <Property Name="intvalue" Type="Int64" />
+          <Property Name="floatvalue" Type="Double" />
+          <Property Name="stringvalue" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="datevalue" Type="DateTime" Precision="3" />
+          <Property Name="dataintegrity" Type="Int32" />
+          <Property Name="t_stamp" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="IgnitionEnterpriseReportingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sqlth_drv" EntityType="Self.sqlth_drv" />
+          <EntitySet Name="sqlth_sce" EntityType="Self.sqlth_sce" />
+          <EntitySet Name="sqlth_scinfo" EntityType="Self.sqlth_scinfo" />
+          <EntitySet Name="sqlth_te" EntityType="Self.sqlth_te" />
+          <EntitySet Name="sqlth_1_data" EntityType="Self.sqlth_1_data" />
+          <EntitySet Name="sqlth_1_data_20191016" EntityType="IgnitionEnterpriseReportingModel.sqlth_1_data_20191016" />
+        </EntityContainer>
+        <EntityType Name="sqlth_1_data_20191016">
+          <Key>
+            <PropertyRef Name="tagid" />
+            <PropertyRef Name="t_stamp" />
+          </Key>
+          <Property Name="tagid" Type="Int32" Nullable="false" />
+          <Property Name="intvalue" Type="Int64" />
+          <Property Name="floatvalue" Type="Double" />
+          <Property Name="stringvalue" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="datevalue" Type="DateTime" Precision="3" />
+          <Property Name="dataintegrity" Type="Int32" />
+          <Property Name="t_stamp" Type="Int64" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IgnitionEnterpriseReportingModelStoreContainer" CdmEntityContainer="IgnitionEnterpriseReportingEntities">
+          <EntitySetMapping Name="sqlth_drv">
+            <EntityTypeMapping TypeName="IgnitionEnterpriseReportingModel.sqlth_drv">
+              <MappingFragment StoreEntitySet="sqlth_drv">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="nice_name" ColumnName="nice_name" />
+                <ScalarProperty Name="division" ColumnName="division" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="control_system" ColumnName="control_system" />
+                <ScalarProperty Name="EGN" ColumnName="EGN" />
+                <ScalarProperty Name="rig_status" ColumnName="rig_status" />
+                <ScalarProperty Name="hist_prov_date" ColumnName="hist_prov_date" />
+                <ScalarProperty Name="edge_prov_date" ColumnName="edge_prov_date" />
+                <ScalarProperty Name="ace_os_prov_date" ColumnName="ace_os_prov_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sqlth_sce">
+            <EntityTypeMapping TypeName="IgnitionEnterpriseReportingModel.sqlth_sce">
+              <MappingFragment StoreEntitySet="sqlth_sce">
+                <ScalarProperty Name="scid" ColumnName="scid" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sqlth_scinfo">
+            <EntityTypeMapping TypeName="IgnitionEnterpriseReportingModel.sqlth_scinfo">
+              <MappingFragment StoreEntitySet="sqlth_scinfo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="scname" ColumnName="scname" />
+                <ScalarProperty Name="drvid" ColumnName="drvid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sqlth_te">
+            <EntityTypeMapping TypeName="IgnitionEnterpriseReportingModel.sqlth_te">
+              <MappingFragment StoreEntitySet="sqlth_te">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tagpath" ColumnName="tagpath" />
+                <ScalarProperty Name="scid" ColumnName="scid" />
+                <ScalarProperty Name="datatype" ColumnName="datatype" />
+                <ScalarProperty Name="querymode" ColumnName="querymode" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="retired" ColumnName="retired" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sqlth_1_data">
+            <EntityTypeMapping TypeName="IgnitionEnterpriseReportingModel.sqlth_1_data">
+              <MappingFragment StoreEntitySet="sqlth_1_data">
+                <ScalarProperty Name="tagid" ColumnName="tagid" />
+                <ScalarProperty Name="intvalue" ColumnName="intvalue" />
+                <ScalarProperty Name="floatvalue" ColumnName="floatvalue" />
+                <ScalarProperty Name="stringvalue" ColumnName="stringvalue" />
+                <ScalarProperty Name="datevalue" ColumnName="datevalue" />
+                <ScalarProperty Name="dataintegrity" ColumnName="dataintegrity" />
+                <ScalarProperty Name="t_stamp" ColumnName="t_stamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sqlth_1_data_20191016">
+            <EntityTypeMapping TypeName="IgnitionEnterpriseReportingModel.sqlth_1_data_20191016">
+              <MappingFragment StoreEntitySet="sqlth_1_data_20191016">
+                <ScalarProperty Name="t_stamp" ColumnName="t_stamp" />
+                <ScalarProperty Name="dataintegrity" ColumnName="dataintegrity" />
+                <ScalarProperty Name="datevalue" ColumnName="datevalue" />
+                <ScalarProperty Name="stringvalue" ColumnName="stringvalue" />
+                <ScalarProperty Name="floatvalue" ColumnName="floatvalue" />
+                <ScalarProperty Name="intvalue" ColumnName="intvalue" />
+                <ScalarProperty Name="tagid" ColumnName="tagid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

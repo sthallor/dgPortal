@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="762741f34faf4e09a6cdab4917af8d85" Name="Diagram1">
+        <EntityTypeShape EntityType="Blackgold_PRODModel.Well" Width="2" PointX="0.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellDrillBitPeriod" Width="2.125" PointX="6.125" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellDrillPeriod" Width="2.25" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellDrillPeriodRemark" Width="2.125" PointX="6.125" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellConnectTime" Width="2.375" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellTrippingSpeed" Width="2.25" PointX="3" PointY="21.75" IsExpanded="true" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK_WellConnectTimes_Well" ManuallyRouted="false" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK_WellDrillPeriod" ManuallyRouted="false" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK_WellTrippingSpeeds_Well" ManuallyRouted="false" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK_WellDrillBitPeriod_WellDrillPeriod" ManuallyRouted="false" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK_WellDrillPeriodRemark_WellDrillPeriod" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.BA_Alias" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellEDR" Width="1.5" PointX="3.25" PointY="38.75" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.WellUOMForEDR" Width="1.5" PointX="3.25" PointY="28.5" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK__WellEDR__Well_We__471EF63B" />
+        <AssociationConnector Association="Blackgold_PRODModel.FK_WellUOMForEDR_Well" />
+        <EntityTypeShape EntityType="Blackgold_PRODModel.UniversalTagPathSelector" Width="2.375" PointX="6.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,415 @@
+﻿<div id="body">
+    <table>
+        <tr>
+            <td>
+                Well ID: <input type="text" id="wellId" value="667461"/><input type="button" id="wellIdGo" title="Get the data for the well" value="Go" /><br />
+                <table id="wellTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="tblTitle">Well</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <th class="vertical">Well ID:</th>
+                        <td><span id="wellIdRetrieved" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Well Name:</th>
+                        <td><span id="wellName" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Uwi:</th>
+                        <td><span id="uwi" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Customer ID:</th>
+                        <td><span id="customerId" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Job Num:</th>
+                        <td><span id="jobNum" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Well Num:</th>
+                        <td><span id="wellNum" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Spud Date:</th>
+                        <td><span id="spudDate" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Rig Released Date:</th>
+                        <td><span id="rigReleasedDate" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Province / State:</th>
+                        <td><span id="provinceState" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Country:</th>
+                        <td><span id="country" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Location:</th>
+                        <td><span id="latLong" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Rig ID:</th>
+                        <td><span id="currentRigId" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Time Zone:</th>
+                        <td><span id="timeZone" /></td>
+                    </tr>
+                    <tr>
+                        <th class="vertical">Active?:</th>
+                        <td><span id="activeInd" /></td>
+                    </tr>
+                </table>
+                <table id="customerTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="tblTitle">Customer</th>
+                        </tr>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Customer Name</th>
+                            <th>Parent Customer ID</th>
+                            <th>PBI Application ID</th>
+                            <th>PBI Workspace ID</th>
+                            <th>PBI User</th>
+                            <th>PBI Password</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="rigTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="3" class="tblTitle">Rig</th>
+                        </tr>
+                        <tr>
+                            <th>Rig ID</th>
+                            <th>Rig Name</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="wapTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="5" class="tblTitle">Well Activity Periods</th>
+                        </tr>
+                        <tr>
+                            <th>Well Activity Period ID</th>
+                            <th>Well ID</th>
+                            <th>Rig ID</th>
+                            <th>Start Date Time</th>
+                            <th>End Date Time</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="tourSheetTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="9" class="tblTitle">Tour Sheets</th>
+                        </tr>
+                        <tr>
+                            <th>Tour Sheet ID</th>
+                            <th>Customer ID</th>
+                            <th>Seq No</th>
+                            <th>Start Date Time</th>
+                            <th>End Date Time</th>
+                            <th>Contract Rep Name</th>
+                            <th>Operator Rep Name</th>
+                            <th>Rig ID</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="opRemarksTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="8" class="tblTitle">Operational Remarks</th>
+                        </tr>
+                        <tr>
+                            <th>Operational Remark ID</th>
+                            <th>Tour Sheet ID</th>
+                            <th>Start Date Time</th>
+                            <th>End Date Time</th>
+                            <th>Remark Type</th>
+                            <th>Remark</th>
+                            <th>Remark Code</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="formationsTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="tblTitle">Formations</th>
+                        </tr>
+                        <tr>
+                            <th>Tour Sheet Formation ID</th>
+                            <th>Tour Sheet ID</th>
+                            <th>Start Date Time</th>
+                            <th>End Date Time</th>
+                            <th>Formation Name</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="connectTimeTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="16" class="tblTitle">Connect Times</th>
+                        </tr>
+                        <tr>
+                            <th>Connect Time ID</th>
+                            <th>Well ID</th>
+                            <th>Start Date Time</th>
+                            <th>End Date Time</th>
+                            <th>From Depth</th>
+                            <th>To Depth</th>
+                            <th>Activity Description</th>
+                            <th>Driller Names</th>
+                            <th>Single or Stands</th>
+                            <th>Number of Connections</th>
+                            <th>Avg W to W Time</th>
+                            <th>Avg S to S Time</th>
+                            <th>Avg Ream Circulate Condition Time</th>
+                            <th>Avg Survey Time</th>
+                            <th>Remark</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="trippingSpeedTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="18" class="tblTitle">Tripping Speeds</th>
+                        </tr>
+                        <tr>
+                            <th>Tripping Speed ID</th>
+                            <th>Well ID</th>
+                            <th>Start Date Time</th>
+                            <th>End Date Time</th>
+                            <th>Active Time</th>
+                            <th>From Depth</th>
+                            <th>To Depth</th>
+                            <th>Activity Description</th>
+                            <th>Driller Names</th>
+                            <th>Single or Stands</th>
+                            <th>Active Delta Block Height</th>
+                            <th>Active Delta Bit Depth</th>
+                            <th>Active Distance Travelled</th>
+                            <th>Remark</th>
+                            <th>Bit In Casing Ind</th>
+                            <th>Crew Handling BHA Ind</th>
+                            <th>Remark Type</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="drillingAssemblyTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="6" class="tblTitle">Drilling Assemblies</th>
+                        </tr>
+                        <tr>
+                            <th>Drilling Assembly ID</th>
+                            <th>Tour Sheet ID</th>
+                            <th>Seq No</th>
+                            <th>Total Length</th>
+                            <th>Total Weight</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table id="drillingAssemblyComponentTable" class="dataTable">
+                    <thead>
+                        <tr>
+                            <th colspan="9" class="tblTitle">Drilling Assembly Components</th>
+                        </tr>
+                        <tr>
+                            <th>Drilling Assembly Component ID</th>
+                            <th>Drilling Assembly ID</th>
+                            <th>Seq No</th>
+                            <th>Description</th>
+                            <th>Component Count</th>
+                            <th>Max Outside Diameter</th>
+                            <th>Min Inside Diameter</th>
+                            <th>Component Length</th>
+                            <th>Active?</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        @{
+            var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+            var baseurl = urlHelper.Content("~");
+         }
+        var baseUrl = "@baseurl";
+
+        function fillWellTable(wellId) {
+            $.getJSON(baseUrl + 'api/well/' + wellId, function (wellJsonPayload) {
+                fillCustomerTable(wellJsonPayload.customerId);
+                fillRigTable(wellJsonPayload.currentRigId);
+                fillWapTable(wellId);
+                fillTourSheetTable(wellId);
+                fillOpRemarksTable(wellId);
+                fillConnectTimeTable(wellId);
+                fillTrippingSpeedTable(wellId);
+                fillFormationsTable(wellId);
+                fillDrillingAssemblyTable(wellId);
+                fillDrillingAssemblyComponentTable(wellId);
+                //$('#wellTable tbody').append('<tr><td>' + wellJsonPayload.wellId + '</td><td>' + wellJsonPayload.wellName + '</td><td>' + wellJsonPayload.uwi + '</td><td>' + wellJsonPayload.customerId + '</td><td>' + wellJsonPayload.jobNum + '</td><td>' + wellJsonPayload.wellNum + '</td><td>' + wellJsonPayload.spudDate + '</td><td>' + wellJsonPayload.rigReleaseDate + '</td><td>' + wellJsonPayload.provinceState + '</td><td>' + wellJsonPayload.country + '</td></tr>');
+                $('#wellIdRetrieved').text(wellJsonPayload.wellId);
+                $('#wellName').text(wellJsonPayload.wellName);
+                $('#uwi').text(wellJsonPayload.uwi);
+                $('#customerId').text(wellJsonPayload.customerId);
+                $('#jobNum').text(wellJsonPayload.jobNum);
+                $('#wellNum').text(wellJsonPayload.wellNum);
+                $('#spudDate').text(wellJsonPayload.spudDate);
+                $('#rigReleasedDate').text(wellJsonPayload.rigReleaseDate);
+                $('#provinceState').text(wellJsonPayload.provinceState);
+                $('#country').text(wellJsonPayload.country);
+                $('#latLong').text('lat: ' + wellJsonPayload.latitude + ', lng:' + wellJsonPayload.longitude) ;
+                $('#currentRigId').text(wellJsonPayload.currentRigId);
+                $('#timeZone').text(wellJsonPayload.timeZone);
+                $('#activeInd').text(wellJsonPayload.activeInd);
+            }
+            );
+        }
+
+        function fillCustomerTable(customerId) {
+            $('#customerTable tbody').remove();
+            $('#customerTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/customer?includeParents=true&customerId=' + customerId, function (customerJsonPayload) {
+                for (var i = 0; i < customerJsonPayload.length; i++) {
+                    var item = customerJsonPayload[i];
+                    $('#customerTable tbody').append('<tr><td>' + item.customerId + '</td><td>' + item.customerName + '</td><td>' + item.parentCustomerId + '</td><td>' + item.pbiApplicationId + '</td><td>' + item.pbiWorkspaceId + '</td><td>' + item.pbiUser + '</td><td>' + (item.pbiPassword ? "REDACTED" : item.pbiPassword) + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillRigTable(rigId) {
+            $('#rigTable tbody').remove();
+            $('#rigTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/rig/' + rigId, function (rigJsonPayload) {
+                $('#rigTable tbody').append('<tr><td>' + rigJsonPayload.rigId + '</td><td>' + rigJsonPayload.rigName + '</td><td>' + rigJsonPayload.activeInd + '</td></tr>');
+            }
+            );
+        }
+
+        function fillWapTable(wellId) {
+            $('#wapTable tbody').remove();
+            $('#wapTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/wellActivityPeriod?wellId=' + wellId, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    $('#wapTable tbody').append('<tr><td>' + item.wellActivityPeriodId + '</td><td>' + item.wellId + '</td><td>' + item.rigId + '</td><td>' + item.startDateTime + '</td><td>' + item.endDateTime + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillTourSheetTable(wellId) {
+            $('#tourSheetTable tbody').remove();
+            $('#tourSheetTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/tourSheet?wellId=' + wellId, function (tourSheetJsonPayload) {
+                for (var i = 0; i < tourSheetJsonPayload.length; i++) {
+                    var item = tourSheetJsonPayload[i];
+                    $('#tourSheetTable tbody').append('<tr><td>' + item.tourSheetId + '</td><td>' + item.customerId + '</td><td>' + item.seqNo + '</td><td>' + item.startDateTime + '</td><td>' + item.endDateTime + '</td><td>' + item.contractRepName + '</td><td>' + item.operatorRepName + '</td><td>' + item.rigId + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillFormationsTable(wellId) {
+            $('#formationsTable tbody').remove();
+            $('#formationsTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/tourSheetFormation?wellId=' + wellId, function (tourSheetFormationJsonPayload) {
+                for (var i = 0; i < tourSheetFormationJsonPayload.length; i++) {
+                    var item = tourSheetFormationJsonPayload[i];
+                    $('#formationsTable tbody').append('<tr><td>' + item.tourSheetFormationId + '</td><td>' + item.tourSheetId + '</td><td>' + item.startDateTime + '</td><td>' + item.endDateTime + '</td><td>' + item.formationName + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillDrillingAssemblyTable(wellId) {
+            $('#drillingAssemblyTable tbody').remove();
+            $('#drillingAssemblyTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/drillingAssembly?wellId=' + wellId, function (drillingAssemblyJsonPayload) {
+                for (var i = 0; i < drillingAssemblyJsonPayload.length; i++) {
+                    var item = drillingAssemblyJsonPayload[i];
+                    $('#drillingAssemblyTable tbody').append('<tr><td>' + item.drillingAssemblyId + '</td><td>' + item.tourSheetId + '</td><td>' + item.seqNo + '</td><td>' + item.totalLength + '</td><td>' + item.totalWeight + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillDrillingAssemblyComponentTable(wellId) {
+            $('#drillingAssemblyComponentTable tbody').remove();
+            $('#drillingAssemblyComponentTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/drillingAssemblyComponent?wellId=' + wellId, function (drillingAssemblyComponentJsonPayload) {
+                for (var i = 0; i < drillingAssemblyComponentJsonPayload.length; i++) {
+                    var item = drillingAssemblyComponentJsonPayload[i];
+                    $('#drillingAssemblyComponentTable tbody').append('<tr><td>' + item.drillingAssemblyComponentId + '</td><td>' + item.drillingAssemblyId + '</td><td>' + item.seqNo + '</td><td>' + item.description + '</td><td>' + item.componentCount + '</td><td>' + item.maxOutsideDiameter + '</td><td>' + item.minInsideDiameter + '</td><td>' + item.componentLength + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillOpRemarksTable(wellId) {
+            $('#opRemarksTable tbody').remove();
+            $('#opRemarksTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/operationalRemark?wellId=' + wellId, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    $('#opRemarksTable tbody').append('<tr><td>' + item.operationalRemarkId + '</td><td>' + item.tourSheetId + '</td><td>' + item.startDateTime + '</td><td>' + item.endDateTime + '</td><td>' + item.remarkType + '</td><td>' + item.remark.substring(0, 20) + '...</td><td>' + item.remarkCode + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillConnectTimeTable(wellId) {
+            $('#connectTimeTable tbody').remove();
+            $('#connectTimeTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/connectTime?wellId=' + wellId, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    $('#connectTimeTable tbody').append('<tr><td>' + item.connectTimeId + '</td><td>' + item.wellId + '</td><td>' + item.startDateTime + '</td><td>' + item.endDateTime + '</td><td>' + item.fromDepth + '</td><td>' + item.toDepth + '</td><td>' + item.activityDescription + '</td><td>' + item.drillerNames + '</td><td>' + item.singleOrStands + '</td><td>' + item.numberOfConnections + '</td><td>' + item.avgWtoWConnectTime + '</td><td>' + item.avgStoSConnectTime + '</td><td>' + item.avgReamCirculateConditionTime + '</td><td>' + item.avgSurveyTime + '</td><td>' + item.remark.substring(0, 20) + '...</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        function fillTrippingSpeedTable(wellId) {
+            $('#trippingSpeedTable tbody').remove();
+            $('#trippingSpeedTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/trippingSpeed?wellId=' + wellId, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    $('#trippingSpeedTable tbody').append('<tr><td>' + item.trippingSpeedId + '</td><td>' + item.wellId + '</td><td>' + item.startDateTime + '</td><td>' + item.endDateTime + '</td><td>' + item.activeTime + '</td><td>' + item.fromDepth + '</td><td>' + item.toDepth + '</td><td>' + item.activityDescription + '</td><td>' + item.drillerNames + '</td><td>' + item.singleOrStands + '</td><td>' + item.activeDeltaBlockHeight + '</td><td>' + item.activeDeltaBitDepth + '</td><td>' + item.activeDistanceTravelled + '</td><td>' + item.remark.substring(0, 20) + '...</td><td>' + item.bitInCasingInd + '</td><td>' + item.crewHandlingBHAInd + '</td><td>' + item.remarkType + '</td><td>' + item.activeInd + '</td></tr>');
+                }
+            }
+            );
+        }
+
+        $('#wellIdGo').click(function () {
+            fillWellTable(encodeURIComponent($('#wellId').val()));
+        });
+
+    </script>
+}

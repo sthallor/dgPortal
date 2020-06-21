@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @{
+    var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+    var baseurl = urlHelper.Content("~");
+    var wellsHref = baseurl;
+    var custHierHref = baseurl + "Home/CustomerHierarchy";
+    var rigHref = baseurl + "Home/Rig";
+    var realTimeHref = baseurl + "Home/RealTime";
+    var customerEditHref = baseurl + "Home/CustomerEdit";
+    }
+
+    <div id="layoutLinks">
+        <h2>@ViewBag.Environment</h2>
+        <a href="@wellsHref">Wells</a>
+        <a href="@custHierHref">Customer Hierarchy</a>
+        <a href="@rigHref">Rig</a>
+        <a href="@realTimeHref">Real time</a>
+        <a href="@customerEditHref">Customer Edit</a>
+    </div>
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jquerytreeview")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

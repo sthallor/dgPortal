@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Rig";
+}
+
+<h2>Rig</h2>
+Rig Number: <input type="text" id="rigNumber" value="778"/><input type="button" id="rigNumberGo" title="Get the data for the rig" value="Go" /><br />
+<table id="rigTable" class="dataTable">
+    <thead>
+        <tr>
+            <th colspan="2" class="tblTitle">Rig</th>
+        </tr>
+    </thead>
+    <tr>
+        <th class="vertical">Rig ID:</th>
+        <td><span id="rigId" /></td>
+    </tr>
+    <tr>
+        <th class="vertical">Rig Name:</th>
+        <td><span id="rigName" /></td>
+    </tr>
+    <tr>
+        <th class="vertical">Active:</th>
+        <td><span id="rigActiveInd" /></td>
+    </tr>
+</table>
+<table id="wellTable" class="dataTable">
+    <thead>
+        <tr>
+            <th colspan="5" class="tblTitle">Well</th>
+        </tr>
+        <tr>
+            <th>Well ID</th>
+            <th>Well Name</th>
+            <th>Spud Date</th>
+            <th>Rig Released Date</th>
+            <th>Well Activity Periods</th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts {
+    <script type="text/javascript">
+        @{
+            var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+            var baseurl = urlHelper.Content("~");
+         }
+        var baseUrl = "@baseurl";
+
+        function fillRigTable(rigNumber) {
+            $.getJSON(baseUrl + 'api/rig?rigName=' + rigNumber, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    if (item != null) {
+                        fillWellTable(item.rigId);
+                        $('#rigId').text(item.rigId);
+                        $('#rigName').text(item.rigName);
+                        $('#rigActiveInd').text(item.activeInd);
+                    }
+
+                }
+            });
+        }
+
+        function fillWellActivityPeriods(wellId) {
+            $('#well' + wellId + 'WapTd').empty();
+            $.getJSON(baseUrl + 'api/wellActivityPeriod?wellId=' + wellId, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    if (i > 0) {
+                        $('#well' + wellId + 'WapTd').append("<br/>");
+                    }
+                    $('#well' + wellId + 'WapTd').append("<span>id: " + item.wellActivityPeriodId + " from " + item.startDateTime + " to " + item.endDateTime + "</span>");
+                }
+            });
+        }
+
+        function fillWellTable(rigId) {
+            $('#wellTable tbody').remove();
+            $('#wellTable').append("<tbody/>");
+            $.getJSON(baseUrl + 'api/well?rigId=' + rigId, function (jsonPayload) {
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    var item = jsonPayload[i];
+                    $('#wellTable tbody').append('<tr><td>' + item.wellId + '</td><td>' + item.wellName + '</td><td>' + item.spudDate + '</td><td>' + item.rigReleaseDate + '</td><td id="well' + item.wellId + 'WapTd">...</td></tr>');
+                    fillWellActivityPeriods(item.wellId);
+                }
+            }
+            );
+        }
+
+        $('#rigNumberGo').click(function () {
+            fillRigTable(encodeURIComponent($('#rigNumber').val()));
+       });
+
+    </script>
+}

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "CustomerHierarchy";
+}
+
+<h2>Customer Hierarchy</h2>
+<div id="treeview" />
+
+@section scripts {
+    <script type="text/javascript">
+        @{
+            var urlHelper = new UrlHelper(Html.ViewContext.RequestContext);
+            var baseurl = urlHelper.Content("~");
+         }
+        var baseUrl = "@baseurl";
+        $(function () {
+            $.getJSON(baseUrl + 'api/customerHierarchy', function (jsonPayload) {
+                var customerData = [];
+                for (var i = 0; i < jsonPayload.length; i++) {
+                    customerData.push(convertForTreeView(jsonPayload[i]));
+                }
+                $("#treeview").treeview({ data: customerData });
+            });
+        }
+        )
+        function convertForTreeView(ch) {
+            var pbiInfo = "(no pbi configuration)";
+            if (ch.Parent.pbiApplicationId != null || ch.Parent.pbiWorkspaceId != null || ch.Parent.pbiUser != null || ch.Parent.pbiPassword != null)
+            {
+                pbiInfo = "("
+                pbiInfo += ("<b>PBI Application ID</b>: " + ch.Parent.pbiApplicationId);
+                pbiInfo += (" <b>PBI Workspace ID</b>: " + ch.Parent.pbiWorkspaceId);
+                pbiInfo += (" <b>PBI User</b>: " + ch.Parent.pbiUser);
+                pbiInfo += (" <b>PBI Password</b>: " + ch.Parent.pbiPassword);
+                pbiInfo += ")"
+            }
+            var ret = { text: '' + ch.Parent.customerId + ': ' + ch.Parent.customerName + ' ' + pbiInfo, tags : [], nodes: [] };
+            for (var i = 0; i < ch.Children.length; i++) {
+                ret.nodes.push(convertForTreeView(ch.Children[i]));
+            }
+            return ret;
+        }
+    </script>
+}
